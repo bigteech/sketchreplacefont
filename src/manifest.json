@@ -1,12 +1,12 @@
 {
-  "identifier": "com.sketchapp.examples.Merge",
+  "identifier": "com.sketchapp.examples.ReplaceFont",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "commands": [
     {
       "script": "main.js",
-      "name": "Merge",
-      "identifier": "Merge"
+      "name": "ReplaceFont",
+      "identifier": "ReplaceFont"
     }
   ]
 }

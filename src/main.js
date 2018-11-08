@@ -1,6 +1,9 @@
 const sketch = require('sketch')
 var ui = require('./ui')
 var UI = require('sketch/ui')
+var dom = require('sketch/dom')
+
+
 
 export default function(context) {
   const document = sketch.fromNative(context.document)
@@ -27,16 +30,19 @@ export default function(context) {
         index++;
       })
       let index2 = 0;
+      let otherIds = [];
       selection.forEach(x => {
         if (index2 === selectedIndex) {
           index2++;
           return;
         }
+        otherIds.push(x.symbolId);
         try {
           var copy = selected.duplicate();
           copy.parent = x.parent;
           copy.frame.x = x.frame.x;
-          copy.frame.y = x.frame.y,
+          copy.frame.y = x.frame.y;
+          copy.text = x.text,
           x.parent = null;
         }catch(e){
             UI.alert('error', e.toString())
