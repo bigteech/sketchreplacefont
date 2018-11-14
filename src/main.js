@@ -5,7 +5,8 @@ var dom = require('sketch/dom')
 var layout = require('./layout')
 
 function changePage(one, from, to) {
-	if (from.indexOf(to.id) > -1) {
+	
+	if (from.indexOf(one.sharedStyleId) > -1) {
 		one.sharedStyleId = to.id;
 	}
 	one.affectedLayer && changePage(one.affectedLayer, from, to)
@@ -44,13 +45,12 @@ export default function (context) {
 			let ids = [];
 			checkboxs.forEach((x, y) => {
 				if (parseInt(x.stringValue())) {
-					ids.push(styles[y].sharedStyleId)
+					ids.push(styles[y].id)
 				}
 			})
 			let toIndex = to.indexOfSelectedItem();
 			let toValue = styles[toIndex];
 			let document = dom.getSelectedDocument();
-
 			document.pages.forEach(x => {
 				changePage(x, ids, toValue);
 			})
