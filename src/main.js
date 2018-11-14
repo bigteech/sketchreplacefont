@@ -8,6 +8,7 @@ function changePage(one, from, to) {
 	
 	if (from.indexOf(one.sharedStyleId) > -1) {
 		one.sharedStyleId = to.id;
+		one.style = to.style;
 	}
 	one.affectedLayer && changePage(one.affectedLayer, from, to)
 	one.overrides && one.overrides.forEach(y => changePage(y, from, to))
