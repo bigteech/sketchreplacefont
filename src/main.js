@@ -32,8 +32,13 @@ export default function (context) {
 		scrollview.setHasVerticalScroller(true);
 		scrollview.setHasHorizontalScroller(true);
 		let scrollContent = new layout(0, 0, 300, 600);
-		names.forEach((x, y) => {
-			let checkbox = ui.checkbox(false, x, y * 20);
+		const selection = document.selectedLayers
+		const selectedStyles = new Set();
+		selection.forEach(x => {
+			selectedStyles.add(x.sharedStyleId);
+		})
+		styles.forEach((x, y) => {
+			let checkbox = ui.checkbox(selectedStyles.has(x.id), x.name, y * 20);
 			scrollContent.add(checkbox);
 			checkboxs.push(checkbox);
 		})
